@@ -1,0 +1,173 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #EFEFEF;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+	/* position: absolute; */
+	display: flex;
+	background-color: #412415;
+	height: 120px;
+	width: 100%;
+	/* flex-flow: row; */
+	align-items: center;
+	justify-content: center;
+}
+
+.page {
+	display: grid;
+	row-gap: 10px;
+	column-gap: 20px;
+	width: 100%;
+	padding: 20px;
+	margin: 0 auto;
+	grid-template-areas:	"items	name"
+							"items	payment"
+							"total	total";
+	grid-template-columns: 1fr 1fr;
+}
+
+.payment {
+	grid-area: payment;
+}
+
+.items {
+	grid-area: items;
+}
+
+.name {
+	grid-area: name;
+}
+
+.total {
+	grid-area: total;
+}
+
+.brand-name {
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+	color: #FBF2C0;
+}
+.brand-logo {
+	height: 30px;
+	position: relative;
+}
+
+.input-group {
+	position: relative;
+	/* display: inline-block; */
+	margin: 20px 5px;
+}
+
+.input {
+	background-color: #eee1d5;
+	border-color: #BA9B7F;
+	padding: 8px;
+	border-radius: 30px;
+	width: 100%;
+	text-indent: 18px;
+}
+
+.input-label {
+	background-color:#eee1d5;
+	color: #BA9B7F;
+	font-size: 15px;
+	position: absolute;
+    left: 15px;
+    top: -10px;
+    padding: 0 2px;
+}
+
+.short {
+	max-width: 140px;
+}
+
+.section {
+	background-color: #eee1d5;
+  	border-radius: 5px;
+  	box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
+  	padding: 15px;
+  	margin-bottom: 20px;
+  	width: 100%;
+	/* position: relative; */
+}
+
+.section-header {
+	color: #BA9B7F;
+	font-weight: lighter;
+	padding: 0;
+	margin: 0;
+}
+
+.items-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;;
+}
+
+.item {
+	border-bottom: 2px solid #DDB892;
+  	display: grid;
+  	padding: 10px 0;
+  	grid-template-columns: 1fr 8fr 1fr;
+  	grid-template-areas: 
+    "quantity title   price"
+    "quantity options price";
+ 	row-gap: 8px;
+}
+
+.item:last-child {
+	border-bottom: none;
+}
+
+.item-quantity {
+	grid-area: quantity;
+	color: gray;
+}
+
+.item-head {
+	grid-area: title;
+	padding: 0;
+	margin: 0;
+}
+
+.item-options {
+	list-style: none;
+	grid-area: options;
+	color: #DDB892;
+}
+
+.total {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+td {
+	padding: 5px 150px;
+}
+
+tr:last-child {
+	font-weight: bold;
+	color: black;
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px;
+	border-color: #412415;
+	background-color: #412415;
+	border-radius: 30px;
+	height: 50px;
+	color: #DDB892;
+}
+
