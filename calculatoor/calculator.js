@@ -1,6 +1,6 @@
 let buffer = "0";
 let total = 0;
-let operator = "";
+let operator = null;
 
 function handleValue(value)
 {
@@ -8,7 +8,6 @@ function handleValue(value)
 		buffer = value
 	else
 		buffer += value;
-	renderScreen(buffer);
 }
 
 function handleOp(value)
@@ -19,21 +18,22 @@ function handleOp(value)
 		{
 			buffer = "0";
 			total = 0;
-			renderScreen(buffer);
 			break;
 		}
-		case "<==":
+		case "↞":
 		{
 			buffer = buffer.slice(0,-1);
 			if (buffer.length == 0)
 				buffer = "0";
-			renderScreen(buffer);
 			break;
 		}
 		case "=":
 		{
+			if (operator === null)
+				return;
 			doOp (operator);
-			renderScreen(total.toString());
+			buffer = "" + total;
+			total = 0;
 			break;
 		}
 		default:
@@ -46,7 +46,6 @@ function handleOp(value)
 				total = parseInt(buffer);
 			}
 			buffer = "0";
-			renderScreen(buffer);
 			break;
 		}
 	}
@@ -56,11 +55,11 @@ function doOp(operator)
 {
 	switch (operator)
 	{
-		case "%":{
+		case "÷":{
 			total = total % parseInt(buffer);
 			break;
 		}
-		case "X":
+		case "x":
 			{
 			total = total * parseInt(buffer);
 			break;}
@@ -79,7 +78,6 @@ function doOp(operator)
 			total = parseInt(buffer);
 			break;
 		}
-		console.log(buffer)
 	}
 }
 
@@ -94,6 +92,7 @@ function buttonClicked(value)
 		handleValue(value);
 	else
 		handleOp(value);
+	renderScreen(buffer);
 }
 
 const myScreen = document.querySelector(".screen");
