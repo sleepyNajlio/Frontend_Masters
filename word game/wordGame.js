@@ -6,9 +6,17 @@ let last = 5;
 let numOfChars = 0;
 let tries = 0;
 let closeOne = false;
+let isLoading = true;
+const loadingDiv = document.querySelector(".loading");
 
+Loading(isLoading);
 fetchWord();
+isLoading = false;
+Loading(isLoading);
 
+function Loading(isLoading) {
+	loadingDiv.classList.toggle("hidden", !isLoading);
+}
 
 async function fetchWord() {
 	try {
@@ -16,6 +24,7 @@ async function fetchWord() {
 	  const data = await response.json();
 	  const wordOfTheDay = data.word;
 	  validWord = wordOfTheDay;
+
 	  console.log(validWord);
 	} catch (error) {
 	  console.error('Error:', error);
@@ -131,6 +140,8 @@ function handleKey(value)
 	}
 	else if (value.toLowerCase() === 'enter')
 	{
+		isLoading = false;
+		Loading(isLoading);
 		handleEnter();
 	}
 	else if (isLetter(value.toLowerCase()))
